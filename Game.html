@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	body {
+		background-color: black;
+	}
+	.container {
+		width: 1000px;
+		margin: 50px auto;
+	}
+
+	div.box {
+		border: solid gray 2px;
+		background: lightgray;
+		
+	}
+	div.box div {
+		width: 39px;
+		height: 39px;
+		border: 2px solid black;
+		float: left;
+		border-radius: 4px;
+		
+		opacity: 0;
+		-moz-transition: all 1500ms;
+	}
+	div.box div.New{
+		opacity: 1;
+		-moz-transition: all 10ms;
+	}
+
+	.badboy {
+		width: 0 !important;
+		height: 0 !important;
+		clear: both !important;
+	}
+	#score{
+		position: fixed;
+		top: 20px;
+		left: 20px;
+		font-size: 20px;
+		color: #eee;
+	}
+	#level{
+		position: fixed;
+		top: 20px;
+		left: 200px;
+		font-size: 20px;
+		color: #eee;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div id="level">Level : 1</div>
+		<div id="score"></div>
+		<div class="box">
+			<script type="text/javascript">
+				var max = 1000/40*12+2;
+
+				for(i=0; i<max; i++){
+					document.write('<div></div>');
+				}
+
+				var divs = document.getElementsByClassName('box').item(0).getElementsByTagName('div');
+
+				for(var i=0;i<max;i++) {
+					var h = Math.floor(Math.random()*360);
+					divs.item(i).style.backgroundColor = "hsl(" + h + ", 90%, 50%)";
+					divs.item(i).onmousedown = function(){
+						if(this.className !='') {
+						this.className='';
+						addPoint();
+						}
+					}
+				}
+
+				function choose() {
+					r = Math.floor(Math.random()*max)
+					divs.item(r).className = 'New'
+				}
+
+				var score = 0;
+				var level = 1;
+				function addPoint() {
+					score++;
+					document.getElementById('score').innerHTML = 'Score : '+score+' / '+max;
+					if(score%10 == 0) {
+						level++;
+						//time=700/(level*level)
+						document.getElementById('level').innerHTML = 'Level : '+level;
+					}
+				}
+				//setInterval(choose,time);
+				i=0;
+				var timer = setInterval(function(){
+					i = Math.floor(Math.random()*max)
+					divs.item(i).className = 'New'
+					i++;
+					if(i>=max) clearInterval(timer);
+				},700);
+
+			</script>
+			<div class="badboy"></div>
+		</div>
+	</div>
+</body>
+</html>
