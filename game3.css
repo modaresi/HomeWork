@@ -1,0 +1,76 @@
+body {
+		background: #596677;
+		background-repeat : no-repeat;
+	}
+	.container {
+		width: 1200px;
+	}
+
+	div.container div.gameBox {
+		width: 700px;
+		height: 700px;
+		margin: 50px 30px;
+		float: left;
+		background: white;
+		border: 2px solid black;
+		-webkit-border-radius: 5px;
+		        border-radius: 5px;
+	}
+
+	div.container div.rightBox {
+		margin-left:800px;
+		height: 500px;	
+	}
+
+	div.container div.rightBox div.logo {
+		height: 148px;
+		background: url('logo.png');
+
+	}
+	div.container div.rightBox div.scoreBox {
+		margin-top: 50px;
+		height: 500px;
+		background: blue;
+	}
+
+	div.container div.gameBox div {
+		width: 70px;
+		height: 70px;
+		background: url('bomb.png') no-repeat;
+		float: left;
+		opacity: 0;
+		-webkit-transition: all 200ms;
+		   -moz-transition: all 200ms;
+		    -ms-transition: all 200ms;
+		     -o-transition: all 200ms;
+		        transition: all 200ms;
+	}
+	div.container div.gameBox div.New{
+		opacity: 1;
+		cursor: pointer;
+		-webkit-transition: all 500ms;
+		   -moz-transition: all 500ms;
+		    -ms-transition: all 500ms;
+		     -o-transition: all 500ms;
+		        transition: all 500ms;
+	}
+
+	.badboy {
+		width: 0 !important;
+		height: 0 !important;
+		clear: both !important;
+	}
+	#score{
+		position: fixed;
+		top: 20px;
+		left: 20px;
+		font-size: 20px;
+		color: #eee;
+	}
+	#level{
+		position: fixed;
+		top: 20px;
+		left: 200px;
+		font-size: 20px;
+		color: #eee;
+	}

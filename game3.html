@@ -1,0 +1,65 @@
+<html>
+<head>
+	<title>1 Bomb!</title>
+	<link type="text/css" rel="stylesheet" href="game3.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="gameBox">
+			<script type="text/javascript">
+				var max = 10*10;
+
+				for(i=0; i<max; i++){
+					document.write('<div></div>');
+				}
+
+				var divs = document.getElementsByClassName('gameBox').item(0).getElementsByTagName('div');
+
+				for(var i=0;i<max;i++) {
+					var h = Math.floor(Math.random()*360);
+					//divs.item(i).style.backgroundColor = "hsl(" + h + ", 90%, 50%)";
+					divs.item(i).onmousedown = function(){
+						if(this.className !='') {
+						this.className='';
+						addPoint();
+						}
+					}
+				}
+
+				function choose() {
+					r = Math.floor(Math.random()*max)
+					divs.item(r).className = 'New'
+				}
+
+				timer=setInterval(choose,1000);
+
+
+				var score = 0;
+				var level = 1;
+				function addPoint() {
+					score++;
+					//document.getElementById('score').innerHTML = 'Score : '+score+' / '+max;
+					if(score%10 == 0) {
+						level++;
+						//document.getElementById('level').innerHTML = 'Level : '+level;
+						time = 1000/level
+						clearInterval(timer);
+						var r=confirm("congragulation!...Press Ok to go Next Level!");
+
+						if (r==true) {
+							timer=setInterval(choose,time);
+						}
+					}
+				}
+			</script>
+			<div class="badboy"></div>
+		</div>
+		<div class="rightBox">
+			<div class="logo"></div>
+			<div class="scoreBox"></div>
+		</div>
+
+	</div>
+
+</body>
+</html>
