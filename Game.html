@@ -83,6 +83,9 @@
 					divs.item(r).className = 'New'
 				}
 
+				timer=setInterval(choose,1000);
+
+
 				var score = 0;
 				var level = 1;
 				function addPoint() {
@@ -92,9 +95,17 @@
 						level++;
 						//time=700/(level*level)
 						document.getElementById('level').innerHTML = 'Level : '+level;
+						time = 1000/level
+						clearInterval(timer);
+						var r=confirm("congragulation!...Press Ok to go Next Level!");
+
+						if (r==true) {
+							timer=setInterval(choose,time);
+						}
 					}
 				}
 				//setInterval(choose,time);
+				/* 
 				i=0;
 				var timer = setInterval(function(){
 					i = Math.floor(Math.random()*max)
@@ -103,6 +114,21 @@
 					if(i>=max) clearInterval(timer);
 				},700);
 
+					function myFunction()
+					{
+					var x;
+					var r=confirm("Press a button!");
+					if (r==true)
+					  {
+					  x="You pressed OK!";
+					  }
+					else
+					  {
+					  x="You pressed Cancel!";
+					  }
+					document.getElementById("demo").innerHTML=x;
+					}
+*/
 			</script>
 			<div class="badboy"></div>
 		</div>
